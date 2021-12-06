@@ -7,6 +7,9 @@ import Users from "./components/Pages/Users";
 import Movies from "./components/Pages/Movies";
 import Orders from "./components/Pages/Orders";
 import AddMovie from "./components/Pages/AddMovie";
+import EditMovie from "./components/Pages/EditMovie";
+import OrderDetail from "./components/Pages/OrderDetail";
+
 const Container = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr 1fr 1fr;
@@ -31,7 +34,9 @@ function App() {
             <Route path="/users" element={<Users />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/orders/detail/:name" element={<OrderDetail />} />
             <Route path="/movies/add" element={<AddMovie />} />
+            <Route path="/movies/edit/:id" element={<EditMovie />} />
           </Routes>
         </Content>
       </Container>
