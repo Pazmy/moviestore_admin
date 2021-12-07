@@ -70,7 +70,14 @@ const Movies = () => {
             return (
               <tr key={i}>
                 <td>{(i += 1)}</td>
-                <td>{movie.title}</td>
+                <td>
+                  <Link
+                    className="hover:underline"
+                    to={`/movie/detail/${movie.id}`}
+                  >
+                    {movie.title}
+                  </Link>
+                </td>
                 <td>{movie.director}</td>
                 <td>{movie.studio}</td>
                 <td>{movie.duration}</td>

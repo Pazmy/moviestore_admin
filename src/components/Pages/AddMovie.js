@@ -143,7 +143,7 @@ const AddMovie = () => {
             <textarea
               type="text"
               name="overview"
-              className="bg-gray-200 mb-2 block w-96 h-32"
+              className=" mb-2 block w-96 h-32"
               value={overview}
               onChange={(e) => handlerChange(e, "overview")}
             />
@@ -258,6 +258,7 @@ const AddMovie = () => {
             <input
               type="file"
               multiple
+              className="block my-2"
               name="image"
               onChange={(e) => handlerChange(e, "image")}
             />
