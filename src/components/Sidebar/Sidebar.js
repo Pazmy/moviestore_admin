@@ -15,10 +15,12 @@ const Menu = styled.div`
     background-color: rgba(255, 255, 255, 0.08);
   }
 `;
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   return (
     <Container>
-      <div className="text-4xl font-bold mt-2 px-2 py-2">Admin</div>
+      <div className="text-4xl font-bold mt-2 px-2 py-2">
+        {user?.name ? user.name : "Admin"}
+      </div>
       <Menu>
         <ul className="flex flex-col">
           <li className="rounded py-2 px-2">
