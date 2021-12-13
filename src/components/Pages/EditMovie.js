@@ -87,30 +87,45 @@ const EditMovie = () => {
   }
   function submitHandler(e) {
     e.preventDefault();
-    const data = new FormData();
-    for (let file of files) {
-      data.append("image", file);
-    }
-    data.append("title", title);
-    data.append("director", director);
-    data.append("studio", studio);
-    data.append("duration", duration);
-    data.append("rate", rate);
-    data.append("trailer", trailer);
-    data.append("release", release);
-    data.append("views", views);
-    data.append("price", price);
-    data.append("overview", overview);
-    data.append("status", status);
-    genres.forEach((genre) => {
-      if (genre.checked && genre.checked === true) {
-        data.append("genresId", genre.id);
-      }
-    });
-    console.log(data.getAll("genresId"));
+
+    // const data = new FormData();
+    // for (let file of files) {
+    //   data.append("image", file);
+    // }
+    // data.append("title", title);
+    // data.append("director", director);
+    // data.append("studio", studio);
+    // data.append("duration", duration);
+    // data.append("rate", rate);
+    // data.append("trailer", trailer);
+    // data.append("release", release);
+    // data.append("views", views);
+    // data.append("price", price);
+    // data.append("overview", overview);
+    // data.append("status", status);
+    // genres.forEach((genre) => {
+    //   if (genre.checked && genre.checked === true) {
+    //     data.append("genresId", genre.id);
+    //   }
+    // });
+    // console.log(data.getAll("genresId"));
     // console.log(data.get("name"));
+
+    const data = {
+      title,
+      director,
+      studio,
+      duration,
+      rate,
+      trailer,
+      release,
+      views,
+      price,
+      overview,
+      status,
+    };
     admin
-      .post("/movies/add", data)
+      .put(`/movies/edit/${id}`, data)
       .then((res) => {
         console.log(res.data);
         navigate("/movies");
@@ -230,7 +245,7 @@ const EditMovie = () => {
             <input
               type="text"
               name="status"
-              className="py-2 px-2 rounded w-80"
+              className="py-2 px-2 rounded w-80 block"
               value={status}
               onChange={(e) => handlerChange(e, "status")}
             />
@@ -252,16 +267,16 @@ const EditMovie = () => {
               })}
             </div> */}
 
-            <input
+            {/* <input
               type="file"
               multiple
               className="block my-2"
               name="image"
               onChange={(e) => handlerChange(e, "image")}
-            />
+            /> */}
             <input
               type="submit"
-              className="p-2 bg-blue-400 cursor-pointer rounded"
+              className="mt-2 p-2 bg-blue-400 cursor-pointer rounded"
               onClick={submitHandler}
             />
           </div>

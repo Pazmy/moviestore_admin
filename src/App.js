@@ -12,18 +12,26 @@ import Register from "./components/Pages/Register";
 import Wrapper from "./components/Wrapper";
 import DetailMovie from "./components/Pages/DetailMovie";
 import AddActor from "./components/Pages/AddActor";
+import Dashboard from "./components/Pages/Dashboard";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Wrapper user={user}>Dashboard</Wrapper>} />
+        <Route
+          path="/"
+          element={
+            <Wrapper user={user}>
+              <Dashboard user={user} />
+            </Wrapper>
+          }
+        />
         <Route
           path="/users"
           element={
             <Wrapper user={user}>
-              <Users />
+              <Users user={user} />
             </Wrapper>
           }
         />

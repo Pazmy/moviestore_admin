@@ -19,8 +19,11 @@ const Table = styled.table`
   td {
     padding: 8px 8px;
   }
+  .avatar {
+    min-height: 69px;
+  }
 `;
-const Users = () => {
+const Users = ({ user }) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     admin.get("/users/").then((res) => {
@@ -28,8 +31,9 @@ const Users = () => {
     });
   }, []);
   function handlerDelete(id) {
+    const token = `Bearer ${user.token}`;
     admin
-      .delete(`/users/delete/${id}`)
+      .delete(`/users/delete/${id}`, { headers: { Authorization: token } })
       .then((res) => {
         window.location.reload();
       })
@@ -61,7 +65,7 @@ const Users = () => {
             return (
               <tr key={i}>
                 <td>{(i += 1)}</td>
-                <td className="flex items-center">
+                <td className="flex items-center avatar">
                   <img
                     src={img}
                     className="mr-2 rounded-full"

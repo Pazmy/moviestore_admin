@@ -3,7 +3,7 @@ import { admin } from "../../helper/axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 const Container = styled.div`
-  padding: 0 20px;
+  padding: 20px 26px;
 `;
 const Content = styled.div`
   background-color: #d5d9e1;
@@ -138,7 +138,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "title")}
             />
             <label htmlFor="" className="block my-2">
-              overview
+              Overview
             </label>
             <textarea
               type="text"
@@ -148,7 +148,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "overview")}
             />
             <label htmlFor="" className="block my-2">
-              director
+              Director
             </label>
             <input
               type="text"
@@ -158,7 +158,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "director")}
             />
             <label htmlFor="" className="block my-2">
-              studio
+              Studio
             </label>
             <input
               type="text"
@@ -168,7 +168,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "studio")}
             />
             <label htmlFor="" className="block my-2">
-              release
+              Release
             </label>
             <input
               type="text"
@@ -178,7 +178,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "release")}
             />
             <label htmlFor="" className="block my-2">
-              rate
+              Rate
             </label>
             <input
               type="text"
@@ -188,7 +188,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "rate")}
             />
             <label htmlFor="" className="block my-2">
-              trailer
+              Trailer
             </label>
             <input
               type="text"
@@ -198,7 +198,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "trailer")}
             />
             <label htmlFor="" className="block my-2">
-              views
+              Views
             </label>
             <input
               type="text"
@@ -208,7 +208,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "views")}
             />
             <label htmlFor="" className="block my-2">
-              price
+              Price
             </label>
             <input
               type="text"
@@ -218,7 +218,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "price")}
             />
             <label htmlFor="" className="block my-2">
-              duration
+              Duration
             </label>
             <input
               type="text"
@@ -228,7 +228,7 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "duration")}
             />
             <label htmlFor="" className="block my-2">
-              status
+              Status
             </label>
             <input
               type="text"
@@ -238,30 +238,35 @@ const AddMovie = () => {
               onChange={(e) => handlerChange(e, "status")}
             />
             <div>
-              {genres.map((genre, i) => {
-                return (
-                  <label htmlFor={genre.name} className="block" key={i}>
-                    <input
-                      type="checkbox"
-                      className="mr-1"
-                      id={genre.name}
-                      name={genre.name}
-                      value={genre.id}
-                      onChange={(e) => handlerChecked(e, i)}
-                    />
-                    {genre.name}
-                  </label>
-                );
-              })}
+              <p className="my-2">Genres</p>
+              <div className="flex flex-wrap gap-2">
+                {genres.map((genre, i) => {
+                  return (
+                    <label htmlFor={genre.name} className="block" key={i}>
+                      <input
+                        type="checkbox"
+                        className="mr-1"
+                        id={genre.name}
+                        name={genre.name}
+                        value={genre.id}
+                        onChange={(e) => handlerChecked(e, i)}
+                      />
+                      {genre.name}
+                    </label>
+                  );
+                })}
+              </div>
             </div>
-
-            <input
-              type="file"
-              multiple
-              className="block my-2"
-              name="image"
-              onChange={(e) => handlerChange(e, "image")}
-            />
+            <div>
+              <p className="my-2">Upload image</p>
+              <input
+                type="file"
+                multiple
+                className="block my-2"
+                name="image"
+                onChange={(e) => handlerChange(e, "image")}
+              />
+            </div>
             <input
               type="submit"
               className="p-2 bg-blue-400 cursor-pointer rounded"
