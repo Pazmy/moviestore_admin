@@ -26,7 +26,7 @@ const Table = styled.table`
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    admin.get("/movies/").then((res) => {
+    admin.get("/movies/admin/").then((res) => {
       setMovies(res.data.results);
     });
   }, []);

@@ -27,7 +27,7 @@ const Table = styled.table`
 const OrderDetail = () => {
   const [order, setOrder] = useState({});
   const { name } = useParams();
-  const [status, setStatus] = useState("");
+  // const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const OrderDetail = () => {
       .get(`/orders/detail/${name}`)
       .then((res) => {
         setOrder(res.data.result);
-        setStatus(res.data.result.status);
+        // setStatus(res.data.result.status);
         setLoading(false);
       })
       .catch((err) => {
@@ -45,18 +45,18 @@ const OrderDetail = () => {
     setLoading(false);
   }, [name]);
 
-  function handleStatus(e) {
-    setStatus(e.target.value);
-    const tempStatus = e.target.value;
-    admin
-      .post("/orders/status", { status: tempStatus, id: order.id })
-      .then((res) => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  }
+  // function handleStatus(e) {
+  //   setStatus(e.target.value);
+  //   const tempStatus = e.target.value;
+  //   admin
+  //     .post("/orders/status", { status: tempStatus, id: order.id })
+  //     .then((res) => {
+  //       window.location.reload();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response);
+  //     });
+  // }
 
   if (loading) {
     return (
@@ -69,7 +69,7 @@ const OrderDetail = () => {
       <Container>
         <h1 className="bold text-4xl mb-2">${order.name}</h1>
         <div className="w-80 mb-2">
-          <div>
+          {/* <div>
             <form>
               <label htmlFor="status" className="mr-2">
                 Status:
@@ -84,7 +84,7 @@ const OrderDetail = () => {
                 <option value="closed">Closed</option>
               </select>
             </form>
-          </div>
+          </div> */}
           <div>
             <span className="mr-2">Date:</span>
             <span>{new Date(order.createdAt).toString().slice(0, 15)}</span>

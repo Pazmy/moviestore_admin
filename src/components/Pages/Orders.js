@@ -55,7 +55,7 @@ const Orders = () => {
             <tr>
               <th>No</th>
               <th className="w-1/4">Order Name</th>
-              <th className="w-1/4">Status</th>
+              {/* <th className="w-1/4">Status</th> */}
               <th className="w-1/2">Date</th>
               <th className="w-1/2">Total</th>
             </tr>
@@ -70,7 +70,7 @@ const Orders = () => {
                       {order.name}
                     </Link>
                   </td>
-                  <td>{order.status}</td>
+                  {/* <td>{order.status}</td> */}
                   <td>{new Date(order.createdAt).toString().slice(0, 15)}</td>
                   <td>{formatter.format(order.total)}</td>
                 </tr>
